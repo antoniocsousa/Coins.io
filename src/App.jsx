@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { getCurrentRate } from './Services/rates'
+import Header from './Components/Header'
 
 function App() {
   return (
     <div>
-
+      <Header />
     </div>
   )
 }
