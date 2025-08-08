@@ -65,7 +65,7 @@ export default function Quotation() {
                     }}
                 />
                 <img
-                    src="src/Assets/transfer.svg" alt="reverse button" 
+                    src="reverse.svg" alt="reverse button" 
                     onClick={() => {
                         const id = quotationOne.id
                         const code = quotationOne.code
