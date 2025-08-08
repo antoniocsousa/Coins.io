@@ -1,14 +1,17 @@
 import SelectBox from '../SelectBox'
 import { getCurrentRate } from '../../Services/rates'
 import { useEffect, useState } from 'react'
+import coins from '../../data/coins.json'
 import './style.css'
 
 export default function Quotation() {
     const [quotationOne, setQuotationOne] = useState({
+        id: 128,
         code: 'USD',
         rate: {}
     })
     const [quotationTwo, setQuotationTwo] = useState({
+        id: 18,
         code: 'BRL',
         rate: {}
     })
@@ -53,7 +56,7 @@ export default function Quotation() {
                 <p>1 {quotationOne.code} hoje em {quotationTwo.code}</p>
             </div>
             <div className="quotation-box">
-                <SelectBox setCode={setQuotationOne} initialId={128} 
+                <SelectBox setQuotation={setQuotationOne} id={quotationOne.id} 
                     value={textValueOne.toString().replace(".", ",")}
                     onChange={(e) => {
                         const rawValue = (e.target.value).replace(",", ".") || 0
@@ -61,8 +64,16 @@ export default function Quotation() {
                         setTextValueTwo((rawValue * value).toFixed(4))
                     }}
                 />
-                <img src="src/Assets/transfer.svg" alt="transfer image" />
-                <SelectBox setCode={setQuotationTwo} initialId={18} 
+                <img
+                    src="src/Assets/transfer.svg" alt="reverse button" 
+                    onClick={() => {
+                        const id = quotationOne.id
+                        const code = quotationOne.code
+                        setQuotationOne({...quotationOne, id: quotationTwo.id, code: quotationTwo.code})
+                        setQuotationTwo({...quotationTwo, id: id, code: code})
+                    }} 
+                />
+                <SelectBox setQuotation={setQuotationTwo} id={quotationTwo.id} 
                     value={textValueTwo.toString().replace(".", ",")}
                     onChange={(e) => {
                         const rawValue = (e.target.value).replace(",", ".") || 0

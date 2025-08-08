@@ -31,6 +31,7 @@
 
 .quotation-box > img {
     width: 60px;
+    cursor: pointer;
 }
 
 @media (max-width: 760px) {

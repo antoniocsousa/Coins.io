@@ -2,10 +2,9 @@ import { useState } from 'react'
 import coins from '../../data/coins.json'
 import './style.css'
 
-export default function SelectBox(props) {
+export default function SelectBox({id, onChange, value, setQuotation}) {
     const [isOpen, setIsOpen] = useState(false);
     const [coinList, setCoinList] = useState(coins);
-    const [id, setId] = useState(props.initialId)
     
 
     function handleClick() {
@@ -25,8 +24,8 @@ export default function SelectBox(props) {
                 <div className="option" onClick={handleClick}>
                     <img src={coinSelected[0].flag} alt="" />
                 </div>
-                <input type="text" value={props.value}
-                    onChange={props.onChange}
+                <input type="text" value={value}
+                    onChange={onChange}
                     onKeyDown={(event) => {
                         const allowed = ["Backspace", "ArrowLeft", "ArrowRight", "Tab", "Delete", ","]
 
@@ -45,9 +44,8 @@ export default function SelectBox(props) {
                                 <li 
                                     key={coin.id}
                                     onClick={() => {
-                                        setId(coin.id)
                                         setIsOpen(!isOpen)
-                                        props.setCode((prevCode) => {return {...prevCode, code: coin.code}})
+                                        setQuotation((prevCode) => {return {...prevCode, id: coin.id, code: coin.code}})
                                     }}
                                 >
                                     <img src={coin.flag} alt="" />{coin.name}
