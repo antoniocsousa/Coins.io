@@ -25,7 +25,9 @@ export default function SelectBox(props) {
                 <div className="option" onClick={handleClick}>
                     <img src={coinSelected[0].flag} alt="" />
                 </div>
-                <input type="text" value='0'/>
+                <input type="text" value={props.value}
+                    onChange={props.setText}
+                />
             </div>
             {
                 isOpen && (
@@ -38,8 +40,7 @@ export default function SelectBox(props) {
                                     onClick={() => {
                                         setId(coin.id)
                                         setIsOpen(!isOpen)
-                                        props.setCode(coin.code)
-                                        setCoinList(coins.filter((coin) => props.pairs.includes(coin.code)))
+                                        props.setCode((prevCode) => {return {...prevCode, code: coin.code}})
                                     }}
                                 >
                                     <img src={coin.flag} alt="" />{coin.name}
