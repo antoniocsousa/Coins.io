@@ -2,10 +2,10 @@ import { useState } from 'react'
 import coins from '../../data/coins.json'
 import './style.css'
 
-export default function SelectBox() {
+export default function SelectBox(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [coinList, setCoinList] = useState(coins);
-    const [id, setId] = useState(128)
+    const [id, setId] = useState(props.initialId)
     
 
     function handleClick() {
@@ -32,9 +32,19 @@ export default function SelectBox() {
                     <div className="content">
                         <input className='search' type="text" placeholder='Search' onChange={handleChange}/>
                         <ul className="options">
-                            {coinList.map((coin, index) => {
-                                return <li key={coin.id}><img src={coin.flag} alt="" />{coin.name}</li>
-                            })}
+                            {coinList.map((coin, index) => (
+                                <li 
+                                    key={coin.id}
+                                    onClick={() => {
+                                        setId(coin.id)
+                                        setIsOpen(!isOpen)
+                                        props.setCode(coin.code)
+                                        setCoinList(coins.filter((coin) => props.pairs.includes(coin.code)))
+                                    }}
+                                >
+                                    <img src={coin.flag} alt="" />{coin.name}
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 )
