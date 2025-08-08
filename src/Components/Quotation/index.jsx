@@ -24,7 +24,8 @@ export default function Quotation() {
 
             var x = parseFloat(Object.values(response)[0].bid)
             setValue(x)
-            setTextValueTwo(x)
+            setTextValueOne(1)
+            setTextValueTwo(x.toFixed(4))
         }
         else {
             setValue(1)
@@ -36,7 +37,8 @@ export default function Quotation() {
             setQuotationTwo({...quotationTwo, rate: Object.values(response)[0]})
             x = parseFloat(Object.values(response)[0].bid) / x
             setValue(x)
-            setTextValueTwo(x)
+            setTextValueOne(1)
+            setTextValueTwo(x.toFixed(4))
         }
     }
 
@@ -52,18 +54,20 @@ export default function Quotation() {
             </div>
             <div className="quotation-box">
                 <SelectBox setCode={setQuotationOne} initialId={128} 
-                    value={textValueOne}
-                    setText={(e) => {
-                        setTextValueOne(e.target.value)
-                        setTextValueTwo(e.target.value * value)
+                    value={textValueOne.toString().replace(".", ",")}
+                    onChange={(e) => {
+                        const rawValue = (e.target.value).replace(",", ".") || 0
+                        setTextValueOne(rawValue)
+                        setTextValueTwo((rawValue * value).toFixed(4))
                     }}
                 />
-                <img src="src\Assets\transfer.svg" alt="transfer image" />
+                <img src="src/Assets/transfer.svg" alt="transfer image" />
                 <SelectBox setCode={setQuotationTwo} initialId={18} 
-                    value={textValueTwo}
-                    setText={(e) => {
-                        setTextValueTwo(e.target.value)
-                        setTextValueOne(e.target.value / value)
+                    value={textValueTwo.toString().replace(".", ",")}
+                    onChange={(e) => {
+                        const rawValue = (e.target.value).replace(",", ".") || 0
+                        setTextValueTwo(rawValue)
+                        setTextValueOne((rawValue / value).toFixed(4))
                     }}
                 />
             </div>

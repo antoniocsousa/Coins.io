@@ -26,7 +26,14 @@ export default function SelectBox(props) {
                     <img src={coinSelected[0].flag} alt="" />
                 </div>
                 <input type="text" value={props.value}
-                    onChange={props.setText}
+                    onChange={props.onChange}
+                    onKeyDown={(event) => {
+                        const allowed = ["Backspace", "ArrowLeft", "ArrowRight", "Tab", "Delete", ","]
+
+                        if (!/[0-9]/.test(event.key) && !allowed.includes(event.key)) {
+                            event.preventDefault()
+                        }
+                    }}
                 />
             </div>
             {
