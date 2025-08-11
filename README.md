@@ -1,12 +1,46 @@
-# React + Vite
+# 💰 Coins.io
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Coins.io** é uma aplicação web simples e moderna para consulta de cotações de moedas em tempo real.  
+O usuário pode escolher moedas de origem e destino para conversão, utilizando dados obtidos diretamente da [AwesomeAPI](https://docs.awesomeapi.com.br/api-de-moedas).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias utilizadas
 
-## Expanding the ESLint configuration
+- **React.js** — Interface de usuário dinâmica e reativa
+- **Axios** — Requisições HTTP para a API
+- **AwesomeAPI** — Fonte de dados de câmbio
+- **CSS Puro** — Estilização responsiva e limpa
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Funcionalidades
+
+- 🔄 Conversão em tempo real entre diferentes moedas
+- 🌎 Suporte a diversas moedas internacionais
+- 🎯 Interface simples e intuitiva
+- 📱 Design responsivo para desktop e mobile
+
+---
+
+## 📦 Como instalar e rodar
+
+```bash
+# Clone o repositório
+git clone https://github.com/antoniocsousa/Coins.io.git
+
+# Entre na pasta do projeto
+cd Coins.io
+
+# Instale as dependências
+npm install
+
+# Rode o servidor de desenvolvimento
+npm start
+```
+O projeto será iniciado em http://localhost:3000/.
+
+---
+
+## 📜 Licença
+Este projeto está sob a licença MIT — veja o arquivo LICENSE para mais detalhes.
